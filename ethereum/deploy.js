@@ -20,4 +20,4 @@ const web3 = new Web3(provider);
 
   console.log('Contract deployed to ', result.options.address);
 
-})
+})();
