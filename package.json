@@ -4,7 +4,8 @@
   "description": "A smart contract that will be used to facillitate a decentralized kickstart application",
   "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "deploy": "node ethereum/compile.js"
   },
   "author": "",
   "license": "ISC",
