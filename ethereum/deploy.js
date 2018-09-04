@@ -14,7 +14,7 @@ const web3 = new Web3(provider);
   const accounts = await web3.eth.getAccounts();
   console.log('Attempting to deploy from account', accounts[0]);
 
-  const results = await new web3.eth.Contract(JSON.parse(compiledFactory.interface))
+  const result = await new web3.eth.Contract(JSON.parse(compiledFactory.interface))
     .deploy({ data: '0x' + compiledFactory.bytecode })
     .send({ gas: '1000000', from: accounts[0] });
 
