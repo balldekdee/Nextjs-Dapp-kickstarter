@@ -1,7 +1,7 @@
 import React from 'react';
 import factory from '../ethereum/factory';
 
-class CampaignIndex extends Component {
+class CampaignIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,6 +13,9 @@ class CampaignIndex extends Component {
     this.setState({
       campaigns
     });
+  }
+  render() {
+    return <h1>Heyhey you you</h1>
   }
 }
 

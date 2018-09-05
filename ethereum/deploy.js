@@ -25,7 +25,7 @@ const deployedAddressPath = path.resolve(__dirname, '../address.js');
 
   console.log(result.options.address);
   fs.removeSync(deployedAddressPath);
-  fs.writeFileSync(deployedAddressPath , `module.exports = ${result.options.address};`);
+  fs.writeFileSync(deployedAddressPath , `module.exports = "${result.options.address}";`);
   console.log('successfully deployed, contract address now accessible in address.js');
 
 })();
