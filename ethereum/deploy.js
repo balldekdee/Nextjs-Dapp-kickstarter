@@ -22,7 +22,6 @@ const deployedAddressPath = path.resolve(__dirname, '../address.js');
     .deploy({ data: '0x' + compiledFactory.bytecode })
     .send({ gas: '1000000', from: accounts[0] });
 
-
   console.log(result.options.address);
   fs.removeSync(deployedAddressPath);
   fs.writeFileSync(deployedAddressPath , `module.exports = "${result.options.address}";`);
