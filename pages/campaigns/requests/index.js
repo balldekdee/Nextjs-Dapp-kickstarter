@@ -44,7 +44,7 @@ class RequestIndex extends React.Component {
         <h3>Requests</h3>
         <Link route = {`/campaigns/${this.props.address}/requests/new`}> 
           <a>
-            <Button primary>Add Request</Button>
+            <Button primary floated ='right' style = {{marginBottom: '10px'}}>Add Request</Button>
           </a>
         </Link>
         <table className = 'ui single line table'>
@@ -57,12 +57,15 @@ class RequestIndex extends React.Component {
               <th>Approval Count</th>
               <th>Approve</th>
               <th>Finalize</th>
+              <th>Deny</th>
+              <th>Finalize Denial</th>
             </tr>
           </thead>
           <tbody>
             {this.renderRows()}
           </tbody>
         </table>
+        <div>Found {this.props.requestCount} requests.</div>
       </Layout>
     );
   }

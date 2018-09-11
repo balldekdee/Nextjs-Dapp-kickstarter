@@ -21,8 +21,11 @@ contract Campaign {
         uint value;
         address recipient;
         bool complete;
+        bool denied;
         uint approvalCount;
+        uint disapprovalCount;
         mapping(address => bool) approvals;
+        mapping(address => bool) disapprovals;
     }
     
     Request[] public requests;
@@ -53,10 +56,24 @@ contract Campaign {
             value: value,
             recipient: recipient,
             complete: false,
-            approvalCount: 0
+            denied: false,
+            approvalCount: 0,
+            disapprovalCount: 0
         });
         
         requests.push(newRequest);
+    }
+
+    function denyRequest(uint index) public {
+        Request storage request = requests[index];
+
+        require(approvers[msg.sender]);
+        require(!request.disapprovals[msg.sender]);
+        require(!request.approvals[msg.sender]);
+        
+        request.disapprovals[msg.sender] = true;
+        request.disapprovalCount++;
+
     }
     
     function approveRequest(uint index) public {
@@ -64,6 +81,7 @@ contract Campaign {
         
         require(approvers[msg.sender]);
         require(!request.approvals[msg.sender]);
+        require(!request.disapprovals[msg.sender]);
         
         request.approvals[msg.sender] = true;
         request.approvalCount++;
@@ -73,12 +91,21 @@ contract Campaign {
         Request storage request = requests[index];
         
         require(request.approvalCount > (approversCount/2));
-        require(!request.complete);
+        require(!request.complete && !request.denied);
         
         require(request.value < address(this).balance);
         
         request.recipient.transfer(request.value);
         request.complete = true;
+    }
+
+    function finalizeDenial(uint index) public restricted {
+        Request storage request = requests[index];
+
+        require(request.disapprovalCount > (approversCount / 2));
+        require(!request.complete && !request.denied);
+
+        request.denied = true;
     }
 
     function getSummary() public view returns(
