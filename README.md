@@ -24,7 +24,7 @@ Use the command `npm run test`
 
 ## Built With
 
-* [Create React App](https://github.com/facebook/create-react-app) - Front-end Framework
+* [Next.js](https://github.com/zeit/next.js/) - Light-weight Framework for static and server rendered applications. 
 * [web3.js](https://maven.apache.org/) - Browser Interface with Smart Contract
 * [solidity](https://solidity.readthedocs.io/en/v0.4.24/) - ETH Platform language used to define smart contracts.
 
