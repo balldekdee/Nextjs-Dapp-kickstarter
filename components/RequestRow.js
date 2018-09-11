@@ -63,6 +63,7 @@ class RequestRow extends React.Component {
         <td>{web3.utils.fromWei(request.value, 'ether')}</td>
         <td>{request.recipient}</td>
         <td>{request.approvalCount}/{approversCount}</td>
+        <td>{request.disapprovalCount}/{approversCount}</td>
         <td>
           { request.complete || request.denied ? null: (
           <Button color = 'green' basic onClick = {this.onApprove}>Approve</Button>

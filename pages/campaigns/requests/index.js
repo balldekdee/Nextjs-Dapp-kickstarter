@@ -55,6 +55,7 @@ class RequestIndex extends React.Component {
               <th>Amount</th>
               <th>Recipient</th>
               <th>Approval Count</th>
+              <th>Denial Count</th>
               <th>Approve</th>
               <th>Finalize</th>
               <th>Deny</th>
